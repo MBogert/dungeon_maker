@@ -14,19 +14,28 @@ DUNGEON_FILE_DEFAULT = 'dungeon.xlsx'
 DUNGEON_DIRECTORY = 'dungeons/'
 
 # Cardinal Directions
-CARDINALS = ['N', 'S', 'E', 'W']
 NORTH = 'N'
 SOUTH = 'S'
 EAST = 'E'
 WEST = 'W'
+# Diaganol Cardinals
+NORTHWEST = 'NW'
+NORTHEAST = 'NE'
+SOUTHWEST = 'SW'
+SOUTHEAST = 'SE'
+CARDINALS = ['N', 'S', 'E', 'W','NW', 'NE', 'SW', 'SE']
 
-ROW_INDEX = 0
-COL_INDEX = 1
+Y_INDEX = 0
+X_INDEX = 1
 
-# Cardinal Movement (x/y vectors)
+# Cardinal Movement (y/x vectors)
 CARDINAL_VECTORS = {
-    NORTH: (1, 0),
-    SOUTH: (-1, 0),
+    NORTH: (-1, 0),
+    SOUTH: (1, 0),
     EAST: (0, 1),
     WEST: (0, -1),
+    NORTHWEST: (-1, -1),
+    NORTHEAST: (-1, 1),
+    SOUTHWEST: (1, -1),
+    SOUTHEAST: (1, 1),
 }

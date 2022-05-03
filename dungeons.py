@@ -13,4 +13,7 @@ def build_scattered_field(dim):
     return dungeon
 
 def build_ruins(dim):
-    return map.build_dungeon_map(dimension=dim, p_mod=0.15)
+    dungeon = map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
+    map.build_dungeon_walls(dungeon, p_mod=0.15)
+    map.remove_adjacentless_tiles(dungeon, c.WALL)
+    return dungeon

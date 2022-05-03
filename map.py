@@ -17,13 +17,12 @@ def init_empty_map(dimension, default_tile):
         map_grid.append([default_tile] * dimension)
     return map_grid
 
-def build_dungeon_map(dimension, p_mod):
-    map_grid = init_empty_map(dimension, c.FLOOR)
-    build_dungeon_walls(map_grid, p_mod)
-    return map_grid
+# def build_ruins(dimension, p_mod):
+#     map_grid = init_empty_map(dimension, c.FLOOR)
+#     build_dungeon_walls(map_grid, p_mod)
+#     return map_grid
 
-# Randomly populate clusters of walls across an empty dungeon floor
-# Leverages percent-modifier for odds of wall population
+# Randomly populate wall tiles across an empty dungeon floor
 def build_dungeon_walls(map_grid, p_mod):
     for y in range(0, len(map_grid)):
         for x in range(0, len(map_grid)):
@@ -44,13 +43,14 @@ def build_cluster(map_grid, row, column):
     itr = r.randint(1,3)
     while itr > 0:
         map_grid[row][column] = c.WALL
-        next_dir = r.choice(get_valid_directions(map_grid, row, column))
-        row += c.CARDINAL_VECTORS[next_dir][c.ROW_INDEX]
-        column += c.CARDINAL_VECTORS[next_dir][c.COL_INDEX]
+        next_direction = r.choice(get_valid_cardinals(map_grid, row, column, False))
+        row += c.CARDINAL_VECTORS[next_direction][c.Y_INDEX]
+        column += c.CARDINAL_VECTORS[next_direction][c.X_INDEX]
         itr -= 1
 
 # Returns a subset of cardinal directions which you could move from a given tile on a map
-def get_valid_directions(map_grid, row, column):
+# 'diaganol' is a flag for whether or not to consider diaganol adjacency
+def get_valid_cardinals(map_grid, row, column, diaganol):
     valid_cardinals = []
     if row > 0:
         valid_cardinals.append(c.NORTH)
@@ -60,5 +60,33 @@ def get_valid_directions(map_grid, row, column):
         valid_cardinals.append(c.SOUTH)
     if column < len(map_grid) - 1:
         valid_cardinals.append(c.EAST)
+    if diaganol:
+        if row > 0 and column > 0:
+            valid_cardinals.append(c.NORTHWEST)
+        if row > 0 and column < len(map_grid) - 1:
+            valid_cardinals.append(c.NORTHEAST)
+        if row < len(map_grid) - 1 and column > 0:
+            valid_cardinals.append(c.SOUTHWEST)
+        if row < len(map_grid) - 1 and column < len(map_grid) - 1:
+            valid_cardinals.append(c.SOUTHEAST)
     return valid_cardinals
 
+# Clears all tiles of a given type, which have no adjacent matching tiles
+# Default clear state is a FLOOR tile
+# This considers diagonal adjacency
+def remove_adjacentless_tiles(map_grid, tile_type):
+    for y in range(0, len(map_grid)):
+        for x in range(0, len(map_grid)):
+            if map_grid[y][x] == tile_type and has_adjacent_tile(map_grid, y, x) is not True:
+                map_grid[y][x] = c.FLOOR
+
+# TODO Debug
+def has_adjacent_tile(map_grid, y, x):
+    tile_type = map_grid[y][x]
+    cardinals = get_valid_cardinals(map_grid, y, x, True)
+    for cardinal in cardinals:
+        y_adj = y + c.CARDINAL_VECTORS[cardinal][c.Y_INDEX]
+        x_adj = x + c.CARDINAL_VECTORS[cardinal][c.X_INDEX]
+    if map_grid[y_adj][x_adj] == tile_type:
+        return True
+    return False
