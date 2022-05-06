@@ -18,7 +18,7 @@ NORTH = 'N'
 SOUTH = 'S'
 EAST = 'E'
 WEST = 'W'
-# Diaganol Cardinals
+# Diagonal Cardinals
 NORTHWEST = 'NW'
 NORTHEAST = 'NE'
 SOUTHWEST = 'SW'

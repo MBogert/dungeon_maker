@@ -80,13 +80,12 @@ def remove_adjacentless_tiles(map_grid, tile_type):
             if map_grid[y][x] == tile_type and has_adjacent_tile(map_grid, y, x) is not True:
                 map_grid[y][x] = c.FLOOR
 
-# TODO Debug
 def has_adjacent_tile(map_grid, y, x):
     tile_type = map_grid[y][x]
     cardinals = get_valid_cardinals(map_grid, y, x, True)
     for cardinal in cardinals:
         y_adj = y + c.CARDINAL_VECTORS[cardinal][c.Y_INDEX]
         x_adj = x + c.CARDINAL_VECTORS[cardinal][c.X_INDEX]
-    if map_grid[y_adj][x_adj] == tile_type:
-        return True
+        if map_grid[y_adj][x_adj] == tile_type:
+            return True
     return False

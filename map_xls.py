@@ -2,9 +2,10 @@ import config as c
 import xlsxwriter
 import random as r
 
+
 def load_to_xls(dungeon):
     # global DUNGEON_FILE_TOKEN
-    relative_path = c.DUNGEON_DIRECTORY + str(r.randint(1,1000)) + c.DUNGEON_FILE_DEFAULT
+    relative_path = c.DUNGEON_DIRECTORY + str(r.randint(1, 1000)) + c.DUNGEON_FILE_DEFAULT
     workbook = xlsxwriter.Workbook(relative_path)
     # DUNGEON_FILE_TOKEN += 1
     worksheet = workbook.add_worksheet()
