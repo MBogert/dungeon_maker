@@ -17,11 +17,6 @@ def init_empty_map(dimension, default_tile):
         map_grid.append([default_tile] * dimension)
     return map_grid
 
-# def build_ruins(dimension, p_mod):
-#     map_grid = init_empty_map(dimension, c.FLOOR)
-#     build_dungeon_walls(map_grid, p_mod)
-#     return map_grid
-
 # Randomly populate wall tiles across an empty dungeon floor
 def build_dungeon_walls(map_grid, p_mod):
     for y in range(0, len(map_grid)):
