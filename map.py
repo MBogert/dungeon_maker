@@ -31,8 +31,8 @@ def build_dungeon_walls(map_grid, p_mod):
                 map_grid[y][x] = c.WALL
 
 def build_wall_clusters(map_grid, p_mod):
-    for y in range(0, len(map_grid) - 1):
-        for x in range(0, len(map_grid) - 1):
+    for y in range(0, len(map_grid)):
+        for x in range(0, len(map_grid)):
             # Determine if a few tiles will be populated
             if r.randint(0,100) / 100 < p_mod:
                 build_cluster(map_grid, y, x)
@@ -89,3 +89,11 @@ def has_adjacent_tile(map_grid, y, x):
         if map_grid[y_adj][x_adj] == tile_type:
             return True
     return False
+
+
+def populate_perimeter(map_grid):
+    for y in range(0, len(map_grid)):
+        for x in range(0, len(map_grid)):
+            if y == 0 or x == 0 or y == len(map_grid) - 1 or x == len(map_grid) - 1:
+                map_grid[y][x] = c.WALL
+

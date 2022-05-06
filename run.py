@@ -1,13 +1,7 @@
-import map
 import map_xls
 import dungeons
 
 # Test various map layouts
-
-# Generic Dungeon
-# dungeon = map.build_dungeon_map(dimension=15, p_mod=.25)
-# map.print_map(dungeon)
-# map_xls.load_to_xls(dungeon)
 
 # Empty Field
 empty_field = dungeons.build_empty_field(15)
@@ -20,3 +14,7 @@ map_xls.load_to_xls(scattered_1)
 # Ruins
 ruins = dungeons.build_ruins(15)
 map_xls.load_to_xls(ruins)
+
+# Cave Interior
+cave = dungeons.build_cave(15)
+map_xls.load_to_xls(cave)
