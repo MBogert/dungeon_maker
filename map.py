@@ -91,9 +91,46 @@ def has_adjacent_tile(map_grid, y, x):
     return False
 
 
-def populate_perimeter(map_grid):
+# || Methods for manipulating the perimeter grid of a map || #
+def closed_perimeter(map_grid):
     for y in range(0, len(map_grid)):
         for x in range(0, len(map_grid)):
             if y == 0 or x == 0 or y == len(map_grid) - 1 or x == len(map_grid) - 1:
                 map_grid[y][x] = c.WALL
 
+def single_entry_perimeter(map_grid):
+    closed_perimeter(map_grid)
+    # Select a random wall to place an entry-point
+    cardinal_entry = r.choice(c.DIRECTIONAL_CARDINALS)
+    build_perimeter_entrance(map_grid, cardinal_entry)
+
+def dual_entry_perimeter(map_grid):
+    closed_perimeter(map_grid)
+    # Select two random walls to place entry-points
+    cardinal_entry_one = r.choice(c.DIRECTIONAL_CARDINALS)
+    cardinal_entry_two = r.choice(list(set(c.DIRECTIONAL_CARDINALS) - set(cardinal_entry_one)))
+    build_perimeter_entrance(map_grid, cardinal_entry_one)
+    build_perimeter_entrance(map_grid, cardinal_entry_two)
+
+def build_perimeter_entrance(map_grid, cardinal):
+    entry_width = int(len(map_grid) * 0.20)
+    entry_index = r.randint(0, len(map_grid) - entry_width)
+    if cardinal is c.NORTH:
+        for perim_tile in range(entry_index, entry_index + entry_width):
+            map_grid[0][perim_tile] = c.FLOOR
+    elif cardinal is c.SOUTH:
+        for perim_tile in range(entry_index, entry_index + entry_width):
+            map_grid[len(map_grid) - 1][perim_tile] = c.FLOOR
+    elif cardinal is c.EAST:
+        for perim_tile in range(entry_index, entry_index + entry_width):
+            map_grid[perim_tile][len(map_grid) - 1] = c.FLOOR
+    elif cardinal is c.WEST:
+        for perim_tile in range(entry_index, entry_index + entry_width):
+            map_grid[perim_tile][0] = c.FLOOR
+
+build_perimeter = {
+    c.PERIMETER_CLOSED: closed_perimeter,
+    c.PERIMETER_SINGLE_ENTRY: single_entry_perimeter,
+    c.PERIMETER_DUAL_ENTRY: dual_entry_perimeter,
+}
+# || ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== || #
