@@ -11,7 +11,7 @@ def build_empty_field(dim):
 
 def build_scattered_field(dim):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
-    map.build_wall_clusters(map_grid=dungeon, p_mod=0.02)
+    map.build_wall_clusters(map_grid=dungeon, p_mod=0.03)
     return dungeon
 
 
@@ -22,7 +22,9 @@ def build_ruins(dim):
     return dungeon
 
 # Different Options
-#
+# PERIMETER_CLOSED (closed cave)
+# PERIMETER_SINGLE_ENTRY (cave with one entrance)
+# PERIMETER_DUAL_ENTRY (cave with two entrances)
 def build_cave(dim, perimeter_type):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
     map.build_wall_clusters(map_grid=dungeon, p_mod=0.08)
