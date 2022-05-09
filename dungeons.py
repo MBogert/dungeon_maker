@@ -32,11 +32,8 @@ def build_cave(dim, perimeter_type):
     return dungeon
 
 
-# TODO Linear Dungeon vs Connected Dungoen
-# Start with random range of rooms (maybe add individual parms later)
-# Scale number of rooms/sizes relative to map dimensions (as well as size of other rooms)
-# Connect the rooms while being built
+# Works best w/ dimensions 20x20 and above
 def build_dungeon(dim):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.WALL)
-    map.build_square_rooms(dungeon)
+    map.populate_square_dungeon(dungeon)
     return dungeon

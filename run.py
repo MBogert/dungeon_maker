@@ -29,5 +29,5 @@ cave_interior_dual = dungeons.build_cave(15, perimeter_type=c.PERIMETER_DUAL_ENT
 map_xls.load_to_xls(cave_interior_dual)
 
 # Traditional 'Dungeon' (rooms & hallways)
-dungeon_room = dungeons.build_dungeon(15)
+dungeon_room = dungeons.build_dungeon(25)
 map_xls.load_to_xls(dungeon_room)
