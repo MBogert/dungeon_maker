@@ -17,7 +17,7 @@ def build_scattered_field(dim):
 
 def build_ruins(dim):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
-    map.build_dungeon_walls(map_grid=dungeon, p_mod=0.15)
+    map.populate_wall_tiles(map_grid=dungeon, p_mod=0.15)
     map.remove_adjacentless_tiles(map_grid=dungeon, tile_type=c.WALL)
     return dungeon
 
@@ -29,4 +29,11 @@ def build_cave(dim, perimeter_type):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
     map.build_wall_clusters(map_grid=dungeon, p_mod=0.08)
     map.build_perimeter[perimeter_type](map_grid=dungeon)
+    return dungeon
+
+
+# Works best w/ dimensions 20x20 and above
+def build_dungeon(dim):
+    dungeon = map.init_empty_map(dimension=dim, default_tile=c.WALL)
+    map.populate_square_dungeon(dungeon)
     return dungeon
