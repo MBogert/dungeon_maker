@@ -4,23 +4,26 @@ dungeons/*
 config_cache.py
 
 # dependencies
-dungeon_viewer/node_modules
-dungeon_viewer/.pnp
-dungeon_viewer/.pnp.js
+viewer/node_modules
+viewer/.pnp
+viewer/.pnp.js
 
 # testing
-dungeon_viewer/coverage
+viewer/coverage
 
 # production
-dungeon_viewer/build
+viewer/build
 
 # misc
-dungeon_viewer/.DS_Store
-dungeon_viewer/.env.local
-dungeon_viewer/.env.development.local
-dungeon_viewer/.env.test.local
-dungeon_viewer/.env.production.local
+viewer/.DS_Store
+viewer/.env.local
+viewer/.env.development.local
+viewer/.env.test.local
+viewer/.env.production.local
 
-dungeon_viewer/npm-debug.log*
-dungeon_viewer/yarn-debug.log*
-dungeon_viewer/yarn-error.log*
+viewer/npm-debug.log*
+viewer/yarn-debug.log*
+viewer/yarn-error.log*
+
+# babel
+viewer/.babelrc

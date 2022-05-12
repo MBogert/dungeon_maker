@@ -3,8 +3,8 @@ import Viewer from './Viewer'
 
 function App() {
   return (
-    <div className="AppContainer">
-        <Viewer/>
+    <div className="App">
+      <Viewer/>
     </div>
   );
 }
