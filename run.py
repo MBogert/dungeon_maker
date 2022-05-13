@@ -1,8 +1,14 @@
 import config as c
 import map_xls
 import dungeons
+from render_dungeon import startup_webapp
+import os
 
 # Test various map layouts
+try:
+    os.makedirs('dungeons')
+except FileExistsError as e:
+    print(e)
 
 # Empty Field
 empty_field = dungeons.build_empty_field(15)
@@ -31,3 +37,6 @@ map_xls.load_to_xls(cave_interior_dual)
 # Traditional 'Dungeon' (rooms & hallways)
 dungeon_room = dungeons.build_dungeon(25)
 map_xls.load_to_xls(dungeon_room)
+
+# Run the React Node project and load an example data structure to render
+startup_webapp()

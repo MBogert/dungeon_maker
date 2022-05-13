@@ -13,5 +13,5 @@ Randomly generated top-down grid-maps for all your miscellaneous tabletop needs.
 - Code Quality Improvements
 - Command Line Interface
 - Improvements to square dungeon template
-- Enable batch calls to dungeon templates, dungeons to xls
+- Enable batch calls to dungeon templates, dungeons to .xls
 - Visual editor

@@ -9,7 +9,6 @@ def load_to_xls(dungeon):
     worksheet = workbook.add_worksheet()
     cell_format_floor = workbook.add_format()
     cell_format_floor.set_bg_color('white')
-    # cell_format_floor.set_font_color('white')
     cell_format_wall = workbook.add_format()
     cell_format_wall.set_bg_color('black')
     for i in range(len(dungeon)):
