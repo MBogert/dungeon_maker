@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rpldy/upload-button": "^0.18.3",
+    "@rpldy/uploader": "^0.18.3",
+    "@rpldy/uploady": "^0.18.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",

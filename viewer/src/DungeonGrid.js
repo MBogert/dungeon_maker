@@ -3,6 +3,7 @@ import {ReactComponent as FloorTile } from './img/FloorTile.svg'
 import {ReactComponent as WallTile } from './img/WallTile.svg'
 
 class DungeonGrid extends React.Component {
+
     constructor(props) {
         super(props)
         this.dimension = 10
@@ -23,7 +24,7 @@ function renderGrid(gridMap) {
   for(let y=0; y < gridMap.length; y++) {
     let columns = []
     for(let x=0; x < gridMap.length; x++) {
-      if (y > 0 && y < gridMap.length - 1 && x > 0 && x < gridMap.length - 1){
+      if(gridMap[y][x] == 0){
         columns.push(<div><FloorTile style={{height:"20px", width:"20px"}}/></div>)
       } else {
         columns.push(<div><WallTile style={{height:"20px", width:"20px"}}/></div>)
