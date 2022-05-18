@@ -11,10 +11,17 @@ argparser.add_argument('-r', '--room', nargs="?", help='Enter dungeon code for t
 args = vars(argparser.parse_args())
 
 # Prompt for arguments if not already provided by user on execution
-if args['client'] or (args['dimension'] == None or args['room']):
-    print('client path')
+dim = 0
+room = ''
+if args['client']:
+    dim = int(input('Enter room dimensions (dimXdim format):\n'))
+    c.print_room_codes()
+    room = input('Enter a valid code from above:\n')
 else:
     dim = args['dimension']
     room = args['room']
-    d = dungeons.dungeon_builds[room](dim)
-    load_map.load_dungeon_to_file(d)
+
+# Build the appropriate dungeon, and load to file
+d = dungeons.dungeon_builds[room](dim)
+load_map.load_dungeon_to_file(d)
+

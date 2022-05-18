@@ -1,5 +1,4 @@
 # To test different builds
-
 import config as c
 from load_map import load_dungeon_to_file
 import dungeons
@@ -35,4 +34,4 @@ load_dungeon_to_file(dungeon_room)
 
 # Run the React Node project and load an example data structure to render
 # TODO
-startup_webapp()
+# startup_webapp()

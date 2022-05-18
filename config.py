@@ -49,3 +49,18 @@ CAVE_CLOSED = 'Cave_Closed_Walls'
 CAVE_SINGLE = 'Cave_Single_Entry'
 CAVE_DOUBLE = 'Cave_Dual_Entry'
 DUNGEON = 'Dungeon_Inside'
+ALL_ROOM_CODES = [FIELD_EMPTY, FIELD_SCATTERED, RUINS, CAVE_CLOSED, CAVE_SINGLE, CAVE_DOUBLE, DUNGEON]
+
+def print_room_codes():
+    print('All Codes        :')
+    print('(Open/Closed define whether or not a map\'s perimeter tiles are all Floor or Wall, respectively)')
+    print('=================')
+    print('Field_No_Walls   : Open dungeon map, all map tiles are floor')
+    print('Field_Some_Walls : Open dungeon map, dotted with a handful of small barriers')
+    print('Ruins            : Remnants of buildings are scattered throughout an open map')
+    print('Cave_Closed_Walls: Enclosed room with a random design of barriers and structures')
+    print('Cave_Single_Entry: A closed cave, but with one opening along the perimeter')
+    print('Cave_Dual_Entry  : Same as above, but with two openings...')
+    print('Dungeon_Inside   : Your traditional run-of-the-mill dungeon, with a collection of rooms and hallways (works best with 20x20 and above)')
+    print('=================')
+
