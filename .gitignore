@@ -1,6 +1,7 @@
 .idea/
 __pycache__/
-dungeons/*
+dungeons/json/*.json
+dungeons/xlsx/*.xlsx
 config_cache.py
 
 # dependencies

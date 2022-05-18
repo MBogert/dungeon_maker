@@ -2,8 +2,11 @@
 WALL = 1
 FLOOR = 0
 
-DUNGEON_FILE_DEFAULT = 'dungeon.xlsx'
-DUNGEON_DIRECTORY = 'dungeons/'
+DUNGEON_FILE_XLSX = 'dungeon.xlsx'
+DUNGEON_FILE_JSON = 'dungeon.json'
+DUNGEON_ROOT = 'dungeons/'
+DUNGEON_JSON_ROOT = 'dungeons/json/'
+DUNGEON_XLSX_ROOT = 'dungeons/xlsx/'
 
 # Cardinal Directions
 NORTH = 'N'
@@ -39,3 +42,8 @@ CARDINAL_VECTORS = {
 PERIMETER_CLOSED = 'CLOSED'
 PERIMETER_SINGLE_ENTRY = 'ONE_ENTRY'
 PERIMETER_DUAL_ENTRY = 'TWO_ENTRY'
+
+# File Config Options
+LOAD_JSON = ['json']
+LOAD_XLSX = ['xlsx']
+LOAD_ALL_FILES = LOAD_JSON + LOAD_XLSX
