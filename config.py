@@ -2,11 +2,9 @@
 WALL = 1
 FLOOR = 0
 
-DUNGEON_FILE_XLSX = 'dungeon.xlsx'
-DUNGEON_FILE_JSON = 'dungeon.json'
-DUNGEON_ROOT = 'dungeons/'
-DUNGEON_JSON_ROOT = 'dungeons/json/'
-DUNGEON_XLSX_ROOT = 'dungeons/xlsx/'
+# Coordinate Indexes (y, x)
+Y_INDEX = 0
+X_INDEX = 1
 
 # Cardinal Directions
 NORTH = 'N'
@@ -19,12 +17,7 @@ NORTHWEST = 'NW'
 NORTHEAST = 'NE'
 SOUTHWEST = 'SW'
 SOUTHEAST = 'SE'
-DIAGONAL_CARDINALS = [NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST]
-#
-ALL_CARDINALS = DIRECTIONAL_CARDINALS + DIAGONAL_CARDINALS
 
-Y_INDEX = 0
-X_INDEX = 1
 
 # Cardinal Movement (y/x vectors)
 CARDINAL_VECTORS = {
@@ -38,7 +31,7 @@ CARDINAL_VECTORS = {
     SOUTHEAST: (1, 1),
 }
 
-# Perimeter Options
+# Perimeter Options (currently used in cave templates)
 PERIMETER_CLOSED = 'CLOSED'
 PERIMETER_SINGLE_ENTRY = 'ONE_ENTRY'
 PERIMETER_DUAL_ENTRY = 'TWO_ENTRY'
