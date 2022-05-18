@@ -1,18 +1,22 @@
 import config as c
 import xlsxwriter
-import random as r
+from os.path import exists
 import json
+import random as r
 
 # Pass in file types you wish to load
 # .json or .xlsx
-def load_dungeon_to_file(dungeon, file_options=['json', 'xlsx']):
+def load_dungeon_to_file(dungeon, name, file_options=['json', 'xlsx']):
     if 'json' in file_options:
-        load_to_json(dungeon)
+        load_to_json(dungeon, name)
     if 'xlsx' in file_options:
-        load_to_xls(dungeon)
+        load_to_xls(dungeon, name)
 
-def load_to_json(dungeon):
-    relative_path = 'dungeons/json/' + str(r.randint(1, 1000)) + 'dungeon.json'
+def load_to_json(dungeon, name):
+    relative_path = 'dungeons/json/' + name + '_dungeon.json'
+    # Quietly handle duplicate filenames
+    if exists(relative_path):
+        relative_path = 'dungeons/json/' + name + str(r.randint(0, 1000)) + '_dungeon.json'
     data = dict()
     data['dungeon'] = dungeon
     json_data = json.dumps(data)
@@ -23,8 +27,11 @@ def load_to_json(dungeon):
         print(e)
     print('Loaded dungeon to ' + relative_path)
 
-def load_to_xls(dungeon):
-    relative_path = 'dungeons/xlsx/' + str(r.randint(1, 1000)) + 'dungeon.xlsx'
+def load_to_xls(dungeon, name):
+    relative_path = 'dungeons/xlsx/' + name + '_dungeon.xlsx'
+    # Quietly handle duplicate filenames
+    if exists(relative_path):
+        relative_path = 'dungeons/xlsx/' + name + str(r.randint(0, 1000)) + '_dungeon.xlsx'
     workbook = xlsxwriter.Workbook(relative_path)
     worksheet = workbook.add_worksheet()
     cell_format_floor = workbook.add_format()
