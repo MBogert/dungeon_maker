@@ -9,9 +9,7 @@ Randomly generated top-down grid-maps for all your miscellaneous tabletop needs.
 
 # To Do:
 - Add package version to 'pip'
-- Visual rendering of dungeon grids _(in progress)_
-- Code Quality Improvements
-- Command Line Interface
 - Improvements to square dungeon template
-- Enable batch calls to dungeon templates, dungeons to .xls
-- Visual editor
+- Enable batch calls to dungeon templates
+- Code Quality Refactoring
+- Load dungeon to visual editor
