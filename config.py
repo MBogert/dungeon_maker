@@ -40,3 +40,12 @@ PERIMETER_DUAL_ENTRY = 'TWO_ENTRY'
 LOAD_JSON = ['json']
 LOAD_XLSX = ['xlsx']
 LOAD_ALL_FILES = LOAD_JSON + LOAD_XLSX
+
+# Dungeon room codes
+FIELD_EMPTY = 'Field_No_Walls'
+FIELD_SCATTERED = 'Field_Some_Walls'
+RUINS = 'Ruins'
+CAVE_CLOSED = 'Cave_Closed_Walls'
+CAVE_SINGLE = 'Cave_Single_Entry'
+CAVE_DOUBLE = 'Cave_Dual_Entry'
+DUNGEON = 'Dungeon_Inside'

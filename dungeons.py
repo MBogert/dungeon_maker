@@ -1,6 +1,5 @@
 import map
 import config as c
-import random as r
 
 
 # Return maps with different layouts, without having to understand specific map operations
@@ -21,6 +20,15 @@ def build_ruins(dim):
     map.remove_adjacentless_tiles(map_grid=dungeon, tile_type=c.WALL)
     return dungeon
 
+def build_closed_cave(dim):
+    return build_cave(dim, c.PERIMETER_CLOSED)
+
+def build_single_entry_cave(dim):
+    return build_cave(dim, c.PERIMETER_SINGLE_ENTRY)
+
+def build_dual_entry_cave(dim):
+    return build_cave(dim, c.PERIMETER_DUAL_ENTRY)
+
 # Different Options
 # PERIMETER_CLOSED (closed cave)
 # PERIMETER_SINGLE_ENTRY (cave with one entrance)
@@ -37,3 +45,14 @@ def build_dungeon(dim):
     dungeon = map.init_empty_map(dimension=dim, default_tile=c.WALL)
     map.populate_square_dungeon(dungeon)
     return dungeon
+
+# Use the below to access any build methods
+dungeon_builds = {
+    c.FIELD_EMPTY: build_empty_field,
+    c.FIELD_SCATTERED: build_scattered_field,
+    c.RUINS: build_ruins,
+    c.CAVE_CLOSED: build_closed_cave,
+    c.CAVE_SINGLE: build_single_entry_cave,
+    c.CAVE_DOUBLE: build_dual_entry_cave,
+    c.DUNGEON: build_dungeon
+}

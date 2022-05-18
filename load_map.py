@@ -4,6 +4,7 @@ import random as r
 import json
 
 # Pass in file types you wish to load
+# .json or .xlsx
 def load_dungeon_to_file(dungeon, file_options=['json', 'xlsx']):
     if 'json' in file_options:
         load_to_json(dungeon)

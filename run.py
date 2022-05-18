@@ -1,36 +1,20 @@
+import argparse
 import config as c
-from load_map import load_dungeon_to_file
+import load_map
 import dungeons
-from render_dungeon import startup_webapp
 
-# Empty Field
-empty_field = dungeons.build_empty_field(15)
-load_dungeon_to_file(empty_field)
+# Check run command for args
+argparser = argparse.ArgumentParser(description='Testing argparse')
+argparser.add_argument('-c', '--client', nargs="?", type=bool, help='If you would like step by step instructions', default=False)
+argparser.add_argument('-d', '--dimension', nargs="?", type=int, help='Enter a square dimension for your dungeon', default=20)
+argparser.add_argument('-r', '--room', nargs="?", help='Enter dungeon code for the type of room you would like built', default=c.DUNGEON)
+args = vars(argparser.parse_args())
 
-# Sparsely Scattered Field
-scattered_field = dungeons.build_scattered_field(15)
-load_dungeon_to_file(scattered_field)
-
-# Ruins
-ruins = dungeons.build_ruins(15)
-load_dungeon_to_file(ruins)
-
-# Cave Interior (closed)
-cave_interior_closed = dungeons.build_cave(15, perimeter_type=c.PERIMETER_CLOSED)
-load_dungeon_to_file(cave_interior_closed)
-
-# Cave Interior (single entry)
-cave_interior_single = dungeons.build_cave(15, perimeter_type=c.PERIMETER_SINGLE_ENTRY)
-load_dungeon_to_file(cave_interior_single)
-
-# Cave Interior (dual entry/exit)
-cave_interior_dual = dungeons.build_cave(15, perimeter_type=c.PERIMETER_DUAL_ENTRY)
-load_dungeon_to_file(cave_interior_dual)
-
-# Traditional 'Dungeon' (rooms & hallways)
-dungeon_room = dungeons.build_dungeon(25)
-load_dungeon_to_file(dungeon_room)
-
-# Run the React Node project and load an example data structure to render
-# TODO
-startup_webapp()
+# Prompt for arguments if not already provided by user on execution
+if args['client'] or (args['dimension'] == None or args['room']):
+    print('client path')
+else:
+    dim = args['dimension']
+    room = args['room']
+    d = dungeons.dungeon_builds[room](dim)
+    load_map.load_dungeon_to_file(d)
