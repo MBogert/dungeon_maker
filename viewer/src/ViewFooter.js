@@ -1,19 +1,19 @@
 import React from 'react'
-import Uploady from "@rpldy/uploady"
-import UploadButton from "@rpldy/upload-button";
 
-class ViewFooter extends React.Component {
+const footerStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+}
 
-  constructor(props) {
-    super(props)
-  }
+function ViewFooter(){
 
-  render() {
-    return <Uploady>
-        <UploadButton/>
-      </Uploady>
-
-  }
+    return(<div style={footerStyle}>
+            <button>Save</button>
+            <button>PDF</button>
+            <button>Quit</button>
+          </div>
+        )
 }
 
 export default ViewFooter;

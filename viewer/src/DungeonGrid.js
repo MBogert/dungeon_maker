@@ -1,22 +1,20 @@
 import React from 'react'
-import {ReactComponent as FloorTile } from './img/FloorTile.svg'
-import {ReactComponent as WallTile } from './img/WallTile.svg'
+import {ReactComponent as WallTile } from './img/floor_tile.svg'
+import {ReactComponent as FloorTile } from './img/wall_tile.svg'
 
-class DungeonGrid extends React.Component {
+const gridStyle = {
+  display: 'inline-block',
+  border: 'dashed',
+  borderWidth: 'medium'
+}
 
-    constructor(props) {
-        super(props)
-        this.dimension = 10
-        this.dungeonMap = createMap(this.dimension)
-    }
-
-    render(){
-      return (
-        <div style={{display:'flex', flexDirection:'column'}}>
-          {renderGrid(this.dungeonMap)}
-        </div>
-      );
-    }
+function DungeonGrid(props) {
+  const dungeon_grid = props.dungeon_grid
+  return (
+    <div style={gridStyle}>
+      {renderGrid(dungeon_grid)}
+    </div>
+  )
 }
 
 function renderGrid(gridMap) {
@@ -33,14 +31,6 @@ function renderGrid(gridMap) {
     gridrows.push(<div className="gridRow" style={{ display: "flex", flexDirection: "row", justifyContent:'center' }}>{columns}</div>)
   }
   return gridrows
-}
-
-function createMap(dimension) {
-    let array = new Array(dimension)
-    for(let y=0; y < dimension; y++){
-        array[y] = new Array(dimension)
-    }
-    return array
 }
 
 export default DungeonGrid;

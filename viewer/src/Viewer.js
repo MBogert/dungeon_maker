@@ -3,19 +3,17 @@ import ViewHeader from './ViewHeader'
 import DungeonGrid from './DungeonGrid'
 import ViewFooter from './ViewFooter'
 
-class Viewer extends React.Component {
+function Viewer(props) {
+  const dungeon_name = props.dungeon_name
+  const dungeon_grid = props.dungeon_grid
+  const current_tile = props.current_tile
 
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-        return <div>
-            <ViewHeader/>
-            <DungeonGrid/>
-            <ViewFooter/>
-        </div>
-    }
+  return (
+    <div>
+      <ViewHeader dungeon_name={dungeon_name} current_tile={current_tile}/>
+      <DungeonGrid dungeon_grid={dungeon_grid} />
+      <ViewFooter />
+    </div>
+  )
 }
-
 export default Viewer;
