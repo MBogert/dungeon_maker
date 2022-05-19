@@ -4,19 +4,16 @@ from os.path import exists
 import json
 import random as r
 
-# Pass in file types you wish to load
-# .json or .xlsx
-def load_dungeon_to_file(dungeon, name, file_options=['json', 'xlsx']):
-    if 'json' in file_options:
-        load_to_json(dungeon, name)
-    if 'xlsx' in file_options:
-        load_to_xls(dungeon, name)
+def load_dungeon_to_file(dungeon, name='generic_filename'):
+    load_to_json(dungeon, name, 'dungeons/json/')
+    load_to_xls(dungeon, name, 'dungeons/xlsx/')
 
-def load_to_json(dungeon, name):
-    relative_path = 'dungeons/json/' + name + '_dungeon.json'
-    # Quietly handle duplicate filenames
-    if exists(relative_path):
-        relative_path = 'dungeons/json/' + name + str(r.randint(0, 1000)) + '_dungeon.json'
+def load_dungeon_to_campaign(dungeon, dungeon_name, relative_path_base):
+    load_to_json(dungeon, dungeon_name, relative_path_base)
+    load_to_xls(dungeon, dungeon_name, relative_path_base)
+
+def load_to_json(dungeon, name, relative_path_base):
+    relative_path = (relative_path_base + name + '.json') if exists(relative_path_base + name + '.json') is not True else (relative_path_base + name + '_' + str(r.randint(0, 1000)) + '.json')
     data = dict()
     data['dungeon'] = dungeon
     json_data = json.dumps(data)
@@ -27,11 +24,8 @@ def load_to_json(dungeon, name):
         print(e)
     print('Loaded dungeon to ' + relative_path)
 
-def load_to_xls(dungeon, name):
-    relative_path = 'dungeons/xlsx/' + name + '_dungeon.xlsx'
-    # Quietly handle duplicate filenames
-    if exists(relative_path):
-        relative_path = 'dungeons/xlsx/' + name + str(r.randint(0, 1000)) + '_dungeon.xlsx'
+def load_to_xls(dungeon, name, relative_path_base):
+    relative_path = (relative_path_base + name + '.xlsx') if exists(relative_path_base + name + '.xlsx') is not True else (relative_path_base + name + '_' + str(r.randint(0, 1000)) + '.xlsx')
     workbook = xlsxwriter.Workbook(relative_path)
     worksheet = workbook.add_worksheet()
     cell_format_floor = workbook.add_format()

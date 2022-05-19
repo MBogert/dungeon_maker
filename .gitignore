@@ -2,6 +2,7 @@
 __pycache__/
 dungeons/json/*.json
 dungeons/xlsx/*.xlsx
+campaigns/*/*
 config_cache.py
 
 # dependencies
