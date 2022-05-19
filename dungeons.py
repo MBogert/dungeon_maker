@@ -2,8 +2,8 @@ import map
 import config as c
 
 
-# Return maps with different layouts, without having to understand specific map operations
 
+# Return maps with different layouts, without having to understand specific map operations
 def build_empty_field(dim):
     return map.init_empty_map(dimension=dim, default_tile=c.FLOOR)
 
