@@ -1,6 +1,8 @@
 import React from 'react'
 
-const footerStyle = {
+
+
+export const footerStyle = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-around',
