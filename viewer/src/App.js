@@ -6,7 +6,7 @@ const testGrid = [[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0,
 function App() {
   return (
     <div className="App">
-      <Viewer name='Dungeon_Test' tileSrc={'https://static.miraheze.org/thefinalrumblewiki/8/84/Potion_seller.png'} grid={testGrid}/>
+      <Viewer name='Dungeon_Test' grid={testGrid}/>
     </div>
   );
 }

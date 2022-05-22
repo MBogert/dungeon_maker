@@ -1,17 +1,19 @@
 import React from 'react'
 import DungeonGrid from './DungeonGrid'
 import ViewFooter from './ViewFooter'
+import ViewHeader from './ViewHeader'
 
 function Viewer(props) {
   const name = props.name
   const grid = props.grid
-  const tileSrc = props.tileSrc
 
   return (
     <div>
-      <DungeonGrid grid={grid} name={name} tileSrc={tileSrc}/>
+      <ViewHeader name={name}/>
+      <DungeonGrid grid={grid} name={name}/>
       <ViewFooter />
     </div>
   )
 }
+
 export default Viewer;

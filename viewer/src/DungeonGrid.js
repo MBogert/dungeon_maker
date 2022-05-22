@@ -1,13 +1,6 @@
-import React, {useState} from 'react'
-import findDOMNode from 'react-dom'
+import React from 'react'
 import {ReactComponent as WallTile } from './img/floor_tile.svg'
 import {ReactComponent as FloorTile } from './img/wall_tile.svg'
-
-export const headerStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-}
 
 export const imgStyleWall = {
   width: '50px',
@@ -33,44 +26,42 @@ const gridStyle = {
   borderWidth: 'medium',
 }
 
-const braveKinght = 'https://i1.sndcdn.com/artworks-000479173020-7mj3zz-t500x500.jpg'
-const potionSeller = 'https://static.miraheze.org/thefinalrumblewiki/8/84/Potion_seller.png'
+class DungeonGridClass extends React.Component {
 
-function DungeonGrid(props) {
-  const [name, setName] = useState(props.name)
-  const [tileSrc, setTileSrc] = useState(props.tileSrc)
-  const [grid, setGrid] = useState(props.grid)
-
-  return (<div>
-    <div style={headerStyle}>
-       <div></div>
-       <h1 contentEditable={true} onChange={() => setName(findDOMNode(this).innerText)}>{name}</h1>
-       <div style={tileStyle}>
-         <h1>Tile:</h1>
-         <img style={imgStyleWall} src={tileSrc} onClick={() => setTileSrc(tileSrc === potionSeller ? braveKinght : potionSeller)} alt='Potion Seller! I request your FINEST potions!'/>
-       </div>
-     </div>
-    <div style={gridStyle}>
-      {renderGrid(grid)}
-    </div>
-  </div>
-  )
-}
-
-function renderGrid(gridMap) {
-  let gridrows = []
-  for(let y=0; y < gridMap.length; y++) {
-    let columns = []
-    for(let x=0; x < gridMap.length; x++) {
-      if(gridMap[y][x] === 0){
-        columns.push(<div><FloorTile style={{height:"20px", width:"20px"}}/></div>)
-      } else {
-        columns.push(<div><WallTile style={{height:"20px", width:"20px"}}/></div>)
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      grid: props.grid,
     }
-    gridrows.push(<div className="gridRow" style={{ display: "flex", flexDirection: "row", justifyContent:'center' }}>{columns}</div>)
   }
-  return gridrows
+
+  setGrid(y, x, value) {
+    let newGrid = this.state.grid
+    newGrid[y][x] = value
+    return this.state.grid
+  }
+
+  renderGrid(gridMap) {
+    let gridrows = []
+    for(let y=0; y < gridMap.length; y++) {
+      let columns = []
+      for(let x=0; x < gridMap.length; x++) {
+        if(gridMap[y][x] === 0){
+          columns.push(<div onClick={() => this.setState({grid: this.setGrid(y, x, 1)})}><FloorTile style={{height:"20px", width:"20px"}}/></div>)
+        } else {
+          columns.push(<div onClick={() => this.setState({grid: this.setGrid(y, x, 0)})}><WallTile style={{height:"20px", width:"20px"}}/></div>)
+        }
+      }
+      gridrows.push(<div className="gridRow" style={{ display: "flex", flexDirection: "row", justifyContent:'center' }}>{columns}</div>)
+    }
+    return gridrows
+  }
+
+  render() {
+      return <div style={gridStyle}>
+        {this.renderGrid(this.state.grid)}
+      </div>
+  }
 }
 
-export default DungeonGrid;
+export default DungeonGridClass;

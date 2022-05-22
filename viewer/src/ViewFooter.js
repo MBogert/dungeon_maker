@@ -1,19 +1,18 @@
 import React from 'react'
-
-
+import ViewerButton from './ViewerButton';
 
 export const footerStyle = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-around',
+  justifyContent: 'center',
 }
 
 function ViewFooter(){
 
     return(<div style={footerStyle}>
-            <button>Save</button>
-            <button>PDF</button>
-            <button>Quit</button>
+            <ViewerButton name={'Save'} />
+            <ViewerButton name={'PDF'} />
+            <ViewerButton name={'Quit'} />
           </div>
         )
 }
