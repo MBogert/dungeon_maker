@@ -33,5 +33,4 @@ dungeon_room = dungeons.dungeon_builds[c.DUNGEON](25)
 load_dungeon_to_file(dungeon_room)
 
 # Run the React Node project and load an example data structure to render
-# TODO
-# startup_webapp()
+startup_webapp('dungeons\json\generic_filename_980.json')

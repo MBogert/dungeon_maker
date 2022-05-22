@@ -1,6 +1,6 @@
 import React from 'react'
-import {ReactComponent as WallTile } from './img/floor_tile.svg'
-import {ReactComponent as FloorTile } from './img/wall_tile.svg'
+import {ReactComponent as WallTile} from './img/floor_tile.svg'
+import {ReactComponent as FloorTile} from './img/wall_tile.svg'
 
 export const imgStyleWall = {
   width: '50px',
