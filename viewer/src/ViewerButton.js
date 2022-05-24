@@ -7,9 +7,10 @@ const btnStyle = {
 function ViewerButton(props) {
 
   const name = props.name
+  const onClickFn = props.onClickFn
 
   return (<div style={btnStyle}>
-      <button>{name}</button>
+      <button onClick={onClickFn}>{name}</button>
     </div>
   )
 }
