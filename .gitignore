@@ -6,6 +6,7 @@ campaigns/*/*
 config_cache.py
 viewer/src/data/*.json
 viewer/src/data/*.xlsx
+sensitive_info.py
 
 # dependencies
 viewer/node_modules
