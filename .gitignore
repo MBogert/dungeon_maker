@@ -6,7 +6,10 @@ campaigns/*/*
 config_cache.py
 viewer/src/data/*.json
 viewer/src/data/*.xlsx
+
+# Sensitive information (e.g. password-enclosed connection URI's)
 sensitive_info.py
+viewer/src/sensitive_info.js
 
 # dependencies
 viewer/node_modules
