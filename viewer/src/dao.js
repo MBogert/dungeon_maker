@@ -1,7 +1,7 @@
 const {MongoClient, ServerApiVersion} = require("mongodb")
 // TODO Figure out how to import sensitive URI info from local
 // const {CONNECTION_STRING} = require('./sensitive_info.js')
-const client = new MongoClient('mongodb://dungeon_master:35PhOJmulXK34kIC@dungeon-maker.hor9x.mongodb.net/?retryWrites=true&w=majority')
+const client = new MongoClient('')
 
 
 //# General Operations
