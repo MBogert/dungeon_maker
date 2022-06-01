@@ -4,11 +4,11 @@ from os.path import exists
 import json
 import random as r
 
-def load_dungeon_to_file(dungeon, name='generic_filename'):
+def load_dungeon_to_file(name='generic_filename', dungeon=[[0]]):
     load_to_json(dungeon, name, 'dungeons/json/')
     load_to_xls(dungeon, name, 'dungeons/xlsx/')
 
-def load_dungeon_to_campaign(dungeon, dungeon_name, relative_path_base):
+def load_dungeon_to_campaign(dungeon_name, dungeon, relative_path_base):
     load_to_json(dungeon, dungeon_name, relative_path_base)
     load_to_xls(dungeon, dungeon_name, relative_path_base)
 
