@@ -24,5 +24,5 @@ else:
 
 # Build the appropriate dungeon, and load to file
 d = dungeons.dungeon_builds[room](dim)
-load_map.load_dungeon_to_file(d)
+load_map.load_dungeon_to_file(dungeon=d)
 
