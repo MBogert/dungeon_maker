@@ -12,19 +12,11 @@ Randomly generated top-down grid-maps for all your miscellaneous tabletop needs.
 - Improvements to templates
   - Square Dungeon
   - Ruins
+- Enhance webapp
+  - Add print option for maps (also save to file)
+  - Add upload option for local files
 - Load dungeon-files to visual editor
   - Run independent processes for python script and node webapp, to allow single-command execution
-- Create persisted backend
-- Create/formalize REST API's
-  - Node.js
-  - Python
-- Add code linter
-  - Include linter commands
-- Add UT coverage
-  - webapp
-  - map/dungeon scripts
-  - Test commands
-- Upload file button
-- Save diagram to file button
-- Print button
-- Deploy webapp to EC2 instance
+- Implement backend
+- Implement linter (maybe even static analysis)
+- Deploy webapp (or serverless?)
